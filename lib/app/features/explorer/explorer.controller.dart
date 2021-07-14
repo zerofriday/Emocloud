@@ -138,7 +138,7 @@ class ExplorerController extends GetxController {
   openDecryptModal() {
     selectedOutputDirectory.value = "${basePath}Download";
     File file = File(selectedFilePath.value);
-    var ext = p.extension(file.path.replaceAll(".aes", ""));
+    var ext = p.extension(file.path.replaceAll(".aes", "")).replaceAll(".", "");
 
     Get.defaultDialog(
       title: "Decrypt File",
@@ -173,7 +173,7 @@ class ExplorerController extends GetxController {
 
   doDecryptSelectedFile() {
     var pureName = p.basename(selectedFilePath.value).replaceAll(".aes", "");
-    var outputFile = selectedOutputDirectory.value  + pureName;
+    var outputFile = selectedOutputDirectory.value + pureName;
     Map params = {
       "file": selectedFilePath.value,
       "outFile": outputFile,
@@ -191,7 +191,7 @@ class ExplorerController extends GetxController {
       Get.showSnackbar(GetBar(
         message: "file saved !",
       ));
-    }).catchError((_){
+    }).catchError((_) {
       Get.showSnackbar(GetBar(
         message: "a problem occurred",
       ));
