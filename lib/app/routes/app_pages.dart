@@ -1,3 +1,4 @@
+import 'package:cloud/app/features/auth/auth.dart';
 import 'package:cloud/app/features/explorer/explorer.bindings.dart';
 import 'package:cloud/app/features/explorer/explorer.dart';
 import 'package:cloud/app/features/main/main.dart';
@@ -21,6 +22,10 @@ class AppPages {
       name: Routes.EXPLORER,
       binding: ExplorerBindings(),
       page: () => Explorer(),
+    ),
+    GetPage(
+      name: Routes.AUTH,
+      page: () => Auth(),
     ),
   ];
 }
