@@ -1,12 +1,12 @@
 import 'package:cloud/app/controller/auth.controller.dart';
-import 'package:cloud/app/data/repository/AuthRepository.dart';
+import 'package:cloud/app/data/services/auth.dart';
 import 'package:cloud/app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AuthPageController extends GetxController {
   AuthController auth = Get.find();
-  AuthRepository repo = AuthRepository();
+  AuthService repo = AuthService();
   var signInLoading = false.obs;
   var signUpLoading = false.obs;
 

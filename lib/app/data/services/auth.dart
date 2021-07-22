@@ -2,19 +2,14 @@ import 'package:cloud/app/constants/api_links.dart';
 import 'package:cloud/app/core/network/api_emo_client.dart';
 import 'package:dio/dio.dart';
 
-class AuthRepository {
-  late Dio dio;
-
-  AuthRepository() {
-    dio = ApiEmoClient().dio;
-  }
+class AuthService {
+  late Dio dio = emoApiClient;
 
   Future CheckToken() {
     return Future.value(false);
   }
 
-  Future signIn(
-      String username, String password) async {
+  Future signIn(String username, String password) async {
     Response res;
     Map data = {"email": username, "password": password};
     res = await dio.post(API_AUTH_SIGN_IN, data: data);

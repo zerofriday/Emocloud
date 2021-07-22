@@ -48,3 +48,5 @@ class ApiEmoClient {
     ));
   }
 }
+
+final Dio emoApiClient = ApiEmoClient().dio;
