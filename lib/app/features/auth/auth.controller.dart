@@ -1,5 +1,6 @@
 import 'package:cloud/app/controller/auth.controller.dart';
 import 'package:cloud/app/data/repository/AuthRepository.dart';
+import 'package:cloud/app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,18 +40,15 @@ class AuthPageController extends GetxController {
     if (!signInValidation()) {
       return;
     }
+    signInLoading.value = true;
 
-    repo
-        .signIn(emailController.text, passwordController.text)
-        .then((value) => {})
-        .catchError((_) {
-      Get.showSnackbar(GetBar(
-        duration: Duration(milliseconds: 1500),
-        message: "error in sign in",
-      ));
+    repo.signIn(emailController.text, passwordController.text).then((res) {
+      if (isSuccess(res)) {}
+
+      signInLoading.value = false;
+    }).catchError((_) {
+      signInLoading.value = false;
     });
-
-    signInLoading.value = !signInLoading.value;
   }
 
   signUpValidation() {}

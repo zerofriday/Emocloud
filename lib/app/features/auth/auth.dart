@@ -1,6 +1,6 @@
 import 'package:cloud/app/constants/app_colors.dart';
 import 'package:cloud/app/features/auth/auth.controller.dart';
-import 'package:cloud/app/widgets.dart';
+import 'package:cloud/app/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,10 +10,11 @@ class Auth extends GetView {
   final AuthPageController controller = Get.put(AuthPageController());
 
   buildSignIn() {
-    return Obx(()=>
-       Form(
-         key: controller.signInForm,
-         child: Column(
+    return Obx(
+      () => Form(
+        key: controller.signInForm,
+        child: ListView(
+          physics: BouncingScrollPhysics(),
           children: [
             Container(
               decoration: BoxDecoration(
@@ -23,8 +24,8 @@ class Auth extends GetView {
                 padding: const EdgeInsets.all(12),
                 child: TextFormField(
                   controller: controller.emailController,
-                  validator: (value) => controller.validateEmail(value??""),
-                  autovalidateMode:AutovalidateMode.onUserInteraction,
+                  validator: (value) => controller.validateEmail(value ?? ""),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                     icon: SvgPicture.asset(
                       "assets/icons/user.svg",
@@ -40,7 +41,7 @@ class Auth extends GetView {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top:12),
+              margin: EdgeInsets.only(top: 12),
               decoration: BoxDecoration(
                   color: AppColors.greyLight,
                   borderRadius: BorderRadius.circular(8)),
@@ -48,8 +49,9 @@ class Auth extends GetView {
                 padding: const EdgeInsets.all(12),
                 child: TextFormField(
                   controller: controller.passwordController,
-                  validator: (value) => (value?.isEmpty??false)?"enter your password":null,
-                  autovalidateMode:AutovalidateMode.onUserInteraction,
+                  validator: (value) =>
+                      (value?.isEmpty ?? false) ? "enter your password" : null,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   decoration: InputDecoration(
                     icon: SvgPicture.asset(
                       "assets/icons/lock.svg",
@@ -64,13 +66,14 @@ class Auth extends GetView {
                 ),
               ),
             ),
-           Padding(
-             padding: EdgeInsets.only(top: 24),
-             child:  submitButton("Sign in", controller.doSignIn,isLoading: controller.signInLoading.value),
-           )
+            Padding(
+              padding: EdgeInsets.only(top: 24),
+              child: submitButton("Sign in", controller.doSignIn,
+                  isLoading: controller.signInLoading.value),
+            )
           ],
+        ),
       ),
-       ),
     );
   }
 
@@ -105,10 +108,8 @@ class Auth extends GetView {
                 )
               ],
             ),
-            Spacer(
-              flex: 1,
-            ),
-            Flexible(
+            Padding(padding: EdgeInsets.only(top: 24)),
+            Expanded(
                 flex: 5,
                 child: DefaultTabController(
                   length: items.length,

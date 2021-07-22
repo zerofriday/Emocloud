@@ -1,4 +1,4 @@
-class GlobalData{
-  static late String emoCloudToken;
+class GlobalData {
+  static late String emoCloudToken="";
 
 }

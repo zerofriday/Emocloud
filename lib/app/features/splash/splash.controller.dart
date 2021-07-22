@@ -12,7 +12,7 @@ class SplashController extends GetxController {
   void onReady() {
     super.onReady();
     Future.delayed(Duration(milliseconds: 1500), () {
-      Get.offNamed(Routes.EXPLORER);
+      Get.offNamed(Routes.AUTH);
     });
   }
 }

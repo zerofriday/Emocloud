@@ -194,6 +194,7 @@ class ExplorerController extends GetxController {
     }).catchError((_) {
       Get.showSnackbar(GetBar(
         message: "a problem occurred",
+        duration: Duration(milliseconds: 1500),
       ));
     });
   }
@@ -220,6 +221,12 @@ class ExplorerController extends GetxController {
     compute(encryptFile, params).then((res) {
       loadDirectoryFiles();
       Get.back(closeOverlays: true);
+    }).catchError((_) {
+      Get.back(closeOverlays: true);
+      Get.showSnackbar(GetBar(
+        message: "a problem occurred",
+        duration: Duration(milliseconds: 1500),
+      ));
     });
   }
 
