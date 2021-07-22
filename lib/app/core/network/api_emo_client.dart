@@ -11,7 +11,11 @@ class ApiEmoClient {
   }
 
   ApiEmoClient._internal() {
-    dio = Dio();
+    BaseOptions options = BaseOptions(
+      connectTimeout: 5000,
+      receiveTimeout: 3000,
+    );
+    dio = Dio(options);
     addInterceptors();
   }
 

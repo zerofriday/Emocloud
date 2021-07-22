@@ -1,4 +1,4 @@
-import 'package:cloud/app/controller/auth.controller.dart';
+import 'package:cloud/app/controllers/auth.controller.dart';
 import 'package:cloud/app/data/services/auth.dart';
 import 'package:cloud/app/utils/utils.dart';
 import 'package:flutter/material.dart';

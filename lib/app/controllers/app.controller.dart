@@ -1,4 +1,4 @@
-import 'package:cloud/app/controller/GetXNetworkManager.dart';
+import 'package:cloud/app/controllers/GetXNetworkManager.dart';
 import 'package:get/get.dart';
 
 class AppController extends GetxController {

@@ -1,5 +1,5 @@
-import 'package:cloud/app/controller/app.controller.dart';
-import 'package:cloud/app/controller/auth.controller.dart';
+import 'package:cloud/app/controllers/app.controller.dart';
+import 'package:cloud/app/controllers/auth.controller.dart';
 import 'package:cloud/app/features/splash/splash.controller.dart';
 import 'package:get/get.dart';
 
