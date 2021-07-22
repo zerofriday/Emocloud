@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'constants/app_colors.dart';
+import '../constants/app_colors.dart';
 
 submitButton(String text, Function onTap, {bool isLoading = false}) {
   return  InkWell(
-      onTap: () => onTap(),
+      onTap: () => isLoading?null:onTap(),
       borderRadius: BorderRadius.circular(8),
         splashColor: AppColors.brand,
       child: Container(
@@ -17,15 +17,15 @@ submitButton(String text, Function onTap, {bool isLoading = false}) {
                 end: Alignment.topRight,
               )),
           child: Center(
-            child: isLoading
+            child: AnimatedSwitcher(duration: Duration(milliseconds: 300  ),child: isLoading
                 ? CircularProgressIndicator(
               color: Colors.white,
               strokeWidth: 1.5,
             )
                 : Text(
-                    text,
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
+              text,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),),
           )),
 
   );
