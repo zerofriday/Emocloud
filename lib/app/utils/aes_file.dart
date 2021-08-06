@@ -7,6 +7,7 @@ final aesAlgorithm = AesCbc.with256bits(
   macAlgorithm: Hmac.sha256(),
 );
 
+
 Future encryptFile(Map params) async {
   // read original file
   File selectedFile = File(params["file"]);
@@ -27,7 +28,6 @@ Future encryptFile(Map params) async {
 }
 
 Future decryptFile(Map params) async {
-  print("key : ${params["key"]}");
   final secretKey =
       await aesAlgorithm.newSecretKeyFromBytes(utf8.encode(params["key"]));
 
